@@ -1,32 +1,26 @@
 [
     {
-        "id": 1,
-        "name": "History",
-        "items": 6
+        "category_id": 1,
+        "name": "History"
     },
     {
-        "id": 2,
-        "name": "Science",
-        "items": 7
+        "category_id": 2,
+        "name": "Science"
     },
     {
-        "id": 3,
-        "name": "Novels",
-        "items": 8
+        "category_id": 3,
+        "name": "Novels"
     },
     {
-        "id": 4,
-        "name": "Computer Science",
-        "items": 9
+        "category_id": 4,
+        "name": "Computer Science"
     },
     {
-        "id": 5,
-        "name": "Religious",
-        "items": 10
+        "category_id": 5,
+        "name": "Religious"
     },
     {
-        "id": 6,
-        "name": "Horror Fictions",
-        "items": 11
+        "category_id": 6,
+        "name": "Horror Fictions"
     }
 ]

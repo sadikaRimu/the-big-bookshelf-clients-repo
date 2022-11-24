@@ -59,14 +59,14 @@ const Login = () => {
                             <span className="label-text">Forget Password?</span>
                         </label>
                     </div>
-                    <input className='btn btn-accent w-full text-white' value='Login' type="submit" />
+                    <input className='btn btn-primary w-full text-white' value='Login' type="submit" />
                     <div>
                         {
                             loginError && <p className='text-red-600'>{loginError}</p>
                         }
                     </div>
                 </form>
-                <p>New to The Big Bookshelf? <Link className='text-secondary' to='/signup'>Create a new account</Link></p>
+                <p>New to The Big Bookshelf? <Link className='text-primary' to='/signup'>Create a new account</Link></p>
                 <div className="divider">OR</div>
                 <button className='btn btn-outline w-full'>CONTINUE WITH GOOGLE</button>
             </div>

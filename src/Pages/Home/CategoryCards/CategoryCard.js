@@ -1,4 +1,6 @@
 import React from 'react';
+import { FaBeer, MdScience, GiMaterialsScience } from 'react-icons/fa';
+
 
 const CategoryCard = ({ card }) => {
     console.log(card);
@@ -8,7 +10,8 @@ const CategoryCard = ({ card }) => {
             <div className="card-body flex flex-col lg:flex-row items-center">
                 {/* <img className='w-20 h-20 mx-4' src='' alt='' /> */}
                 <div className=''>
-                    <h2 className="card-title">{name}</h2>
+
+                    <h2 className="card-title">{name} </h2>
                     <p>{items} books are available in this category</p>
                 </div>
             </div>
