@@ -1,21 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { toast } from 'react-toastify';
-import { AuthContext } from '../../../contexts/AuthProvider';
-import useSeller from '../../../hooks/useSeller';
 
-const Allusers = () => {
+const AllSeller = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users');
+            const res = await fetch('http://localhost:5000/users/seller');
             const data = await res.json();
             return data;
         }
     });
-
-    const handleMakeAdmin = id => {
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+    const handleVerification = id => {
+        fetch(`http://localhost:5000/users/seller/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
@@ -24,14 +21,14 @@ const Allusers = () => {
             .then(res => res.json())
             .then(data => {
                 if (data.modifiedCount > 0) {
-                    toast.success('Make Admin Successful');
+                    toast.success('Verified Successfully');
                     refetch();
                 }
             })
     }
     return (
         <div>
-            <h2 className='text-3xl mb-6'>All Users</h2>
+            <h2 className='text-xl font-bold'>All Seller List</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
 
@@ -41,7 +38,7 @@ const Allusers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th>Admin</th>
+                            <th>Action</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -53,8 +50,15 @@ const Allusers = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>
-                                <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)}
-                                    className='btn btn-xs btn-primary'>Make Admin</button>}</td>
+                                <td>
+                                    {
+                                        user?.status !== 'Verified' ?
+                                            user?.role !== 'Admin' && <button onClick={() => handleVerification(user._id)}
+                                                className='btn btn-xs btn-primary'>Verify</button>
+                                            :
+                                            <button className='btn btn-xs btn-primary'>Verified</button>
+                                    }
+                                </td>
                                 <td><button className='btn btn-xs btn-danger'>Delete</button></td>
                             </tr>)
                         }
@@ -65,4 +69,4 @@ const Allusers = () => {
     );
 };
 
-export default Allusers;
+export default AllSeller;

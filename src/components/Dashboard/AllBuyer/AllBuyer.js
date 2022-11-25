@@ -1,14 +1,12 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useContext, useEffect, useState } from 'react';
+import React from 'react';
 import { toast } from 'react-toastify';
-import { AuthContext } from '../../../contexts/AuthProvider';
-import useSeller from '../../../hooks/useSeller';
 
-const Allusers = () => {
+const AllBuyer = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users');
+            const res = await fetch('http://localhost:5000/users/buyer');
             const data = await res.json();
             return data;
         }
@@ -31,7 +29,7 @@ const Allusers = () => {
     }
     return (
         <div>
-            <h2 className='text-3xl mb-6'>All Users</h2>
+            <h2 className='text-xl font-bold'>All Buyer list</h2>
             <div className="overflow-x-auto">
                 <table className="table w-full">
 
@@ -41,7 +39,7 @@ const Allusers = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th>Admin</th>
+                            <th>Action</th>
                             <th>Delete</th>
                         </tr>
                     </thead>
@@ -65,4 +63,4 @@ const Allusers = () => {
     );
 };
 
-export default Allusers;
+export default AllBuyer;

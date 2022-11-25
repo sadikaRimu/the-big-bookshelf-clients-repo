@@ -23,7 +23,7 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 setloginUserEmail(data.email);
-                //navigate(from, { replace: true });
+                navigate(from, { replace: true });
             })
             .catch(err => {
                 console.error(err.message);

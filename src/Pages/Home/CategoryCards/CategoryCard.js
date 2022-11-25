@@ -1,10 +1,11 @@
 import React from 'react';
-import { FaBeer, MdScience, GiMaterialsScience } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+
+
 
 
 const CategoryCard = ({ card }) => {
-    console.log(card);
-    const { name, items } = card;
+    const { name } = card;
     return (
         <div className='card w-96 mx-5 bg-gradient-to-r from-secondary to-primary text-white'>
             <div className="card-body flex flex-col lg:flex-row items-center">
@@ -12,8 +13,12 @@ const CategoryCard = ({ card }) => {
                 <div className=''>
 
                     <h2 className="card-title">{name} </h2>
-                    <p>{items} books are available in this category</p>
+
+
+                    <Link to={`/categoryBooks/${name}`}><button className='btn btn-warning mt-6'>View collection</button></Link>
                 </div>
+
+
             </div>
         </div>
     );
