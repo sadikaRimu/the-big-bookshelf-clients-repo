@@ -71,9 +71,18 @@ const MyProducts = () => {
                                             <button className='btn btn-secondary btn-sm'>Advertised</button>
                                     }
                                 </td>
-                                <td><p
-                                    className='text-primary font-bold'
-                                >Availabe</p></td>
+                                <td>
+                                    {
+                                        book?.status === 'Booked' ?
+                                            <p
+                                                className='text-primary font-bold'
+                                            >Booked</p>
+                                            :
+                                            <p
+                                                className='text-primary font-bold'
+                                            >Availabe</p>
+                                    }
+                                </td>
                                 <td><button
                                     className='btn btn-nutral btn-sm'
                                 >Delete</button></td>
