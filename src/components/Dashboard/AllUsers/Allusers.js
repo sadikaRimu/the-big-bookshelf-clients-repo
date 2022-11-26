@@ -15,14 +15,17 @@ const Allusers = () => {
     });
 
     const handleMakeAdmin = (id) => {
-        //const role = 'Admin'
+        const UserRole = {
+            role: 'Admin'
+        }
 
         fetch(`http://localhost:5000/users/makeAdmin/${id}`, {
             method: 'PUT',
             headers: {
+                'content-type': 'application/json',
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
             },
-            // body: JSON.stringify({ role })
+            body: JSON.stringify(UserRole)
         })
             .then(res => res.json())
             .then(data => {
