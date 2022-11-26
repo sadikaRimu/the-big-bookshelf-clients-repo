@@ -8,6 +8,7 @@ import MyWishList from "../../components/Dashboard/MyWishList/MyWishList";
 import Login from "../../components/Login/Login";
 import SignUp from "../../components/SignUp/SignUp";
 import DashboardLayout from "../../Layout/DashboardLayout";
+import Blogs from "../../Pages/Blogs/Blogs";
 import Categories from "../../Pages/Home/CategoryCards/Categories";
 import RouteNotFound from "../../Pages/RouteNotFound/RouteNotFound";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
             {
                 path: '/signup',
                 element: <SignUp></SignUp>
+            },
+            {
+                path: '/blogs',
+                element: <Blogs></Blogs>
             },
             {
                 path: '/categoryBooks/:name',
