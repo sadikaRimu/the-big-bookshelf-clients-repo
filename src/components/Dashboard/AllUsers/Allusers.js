@@ -14,12 +14,15 @@ const Allusers = () => {
         }
     });
 
-    const handleMakeAdmin = id => {
-        fetch(`http://localhost:5000/users/admin/${id}`, {
+    const handleMakeAdmin = (id) => {
+        //const role = 'Admin'
+
+        fetch(`http://localhost:5000/users/makeAdmin/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`
-            }
+            },
+            // body: JSON.stringify({ role })
         })
             .then(res => res.json())
             .then(data => {
@@ -53,7 +56,7 @@ const Allusers = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>
-                                <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)}
+                                <td>{user?.role !== 'Admin' && <button onClick={() => handleMakeAdmin(user._id, user.role)}
                                     className='btn btn-xs btn-primary'>Make Admin</button>}</td>
                                 <td><button className='btn btn-xs btn-danger'>Delete</button></td>
                             </tr>)

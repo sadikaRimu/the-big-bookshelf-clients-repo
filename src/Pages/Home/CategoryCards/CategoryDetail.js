@@ -9,7 +9,7 @@ const CategoryDetail = ({ book }) => {
     const { user } = useContext(AuthContext);
     const { _id, bookName, email, SellerName, postDate, originalPrice, resalePrice, condition, booksCategory, image, phone, location, purchaseYear, description } = book;
     const [isVerified] = useVerified(user?.email);
-    console.log('gg', isVerified);
+    console.log('book', book);
     const handleBooking = event => {
         event.preventDefault();
         const form = event.target;
