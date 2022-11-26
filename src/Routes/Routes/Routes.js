@@ -4,10 +4,12 @@ import AllSeller from "../../components/Dashboard/AllSeller/AllSeller";
 import Allusers from "../../components/Dashboard/AllUsers/Allusers";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import MyProducts from "../../components/Dashboard/MyProducts/MyProducts";
+import MyWishList from "../../components/Dashboard/MyWishList/MyWishList";
 import Login from "../../components/Login/Login";
 import SignUp from "../../components/SignUp/SignUp";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import Categories from "../../Pages/Home/CategoryCards/Categories";
+import RouteNotFound from "../../Pages/RouteNotFound/RouteNotFound";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
 
 const { createBrowserRouter } = require("react-router-dom");
@@ -61,8 +63,16 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/allsellers',
                 element: <AllSeller></AllSeller>
+            },
+            {
+                path: '/dashboard/wishList',
+                element: <MyWishList></MyWishList>
             }
         ]
+    },
+    {
+        path: '/*',
+        element: <RouteNotFound></RouteNotFound>
     }
 
 ]);
