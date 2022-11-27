@@ -39,8 +39,6 @@ const AllBuyer = () => {
                             <th>Name</th>
                             <th>Email</th>
                             <th>Role</th>
-                            <th>Action</th>
-                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,9 +49,6 @@ const AllBuyer = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>
-                                <td>{user?.role !== 'admin' && <button onClick={() => handleMakeAdmin(user._id)}
-                                    className='btn btn-xs btn-primary'>Make Admin</button>}</td>
-                                <td><button className='btn btn-xs btn-danger'>Delete</button></td>
                             </tr>)
                         }
                     </tbody>

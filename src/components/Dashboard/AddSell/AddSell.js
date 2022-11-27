@@ -47,7 +47,8 @@ const AddSell = () => {
                         phone: data.phone,
                         location: data.location,
                         description: data.description,
-                        purchaseYear: data.purchaseYear
+                        purchaseYear: data.purchaseYear,
+                        status: 'Available'
                     }
 
                     //save books info to the database
@@ -75,29 +76,6 @@ const AddSell = () => {
         <div className='w-96 p-7'>
             <h2 className='text-3xl font-bold'>Add A Book for Sell</h2>
             <form onSubmit={handleSubmit(handleAddBook)}>
-                {/* <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                        <span className="label-text">Seller's Email</span>
-                    </label>
-                    <input type='text'
-                        {...register('email', {
-                            required: 'email is required'
-                        }, { value: user?.email })}
-
-                        className="input input-bordered w-full max-w-xs" />
-                    {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
-                </div>
-                <div className="form-control w-full max-w-xs">
-                    <label className="label">
-                        <span className="label-text">Seller's Name</span>
-                    </label>
-                    <input type='text'
-                        {...register('email', {
-                            required: 'email is required'
-                        })}
-                        className="input input-bordered w-full max-w-xs" />
-                    {errors.email && <p className='text-red-600'>{errors.email?.message}</p>}
-                </div> */}
                 <div className="form-control w-full max-w-xs">
                     <label className="label">
                         <span className="label-text">Book Name</span>

@@ -39,7 +39,6 @@ const AllSeller = () => {
                             <th>Email</th>
                             <th>Role</th>
                             <th>Action</th>
-                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -59,7 +58,6 @@ const AllSeller = () => {
                                             <button className='btn btn-xs btn-primary'>Verified</button>
                                     }
                                 </td>
-                                <td><button className='btn btn-xs btn-danger'>Delete</button></td>
                             </tr>)
                         }
                     </tbody>

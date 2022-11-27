@@ -13,7 +13,8 @@ const MyWishList = () => {
             return data;
         }
     });
-    const handleWishDelete = id => {
+    const handleWishDelete = (id, bookId) => {
+
         const proceed = window.confirm('Are you sure, you want to delete this?');
         if (proceed) {
             fetch(`http://localhost:5000/wishList/${id}`, {
@@ -26,13 +27,33 @@ const MyWishList = () => {
                 .then(data => {
                     console.log(data);
                     if (data.deletedCount > 0) {
+                        handleRemoveBooked(bookId);
                         toast('deleted successfully');
-                        // const remaining = reviews.filter(review => review._id !== id);
-                        // setReviews(remaining);
                         refetch();
                     }
                 })
         }
+    }
+    const handleRemoveBooked = id => {
+        console.log(id);
+        const bookStatus = {
+            status: 'Available'
+        }
+        fetch(`http://localhost:5000/books/statusAvailable/${id}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json',
+                authorization: `bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(bookStatus)
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+                    // toast.success('Make Admin Successful');
+                    //refetch();
+                }
+            })
     }
     return (
         <div>
@@ -59,7 +80,7 @@ const MyWishList = () => {
                                 <td>{item.email}</td>
                                 <td>{item.contact}</td>
                                 <td>{item.meetinglocation}</td>
-                                <td><button onClick={() => handleWishDelete(item._id)} className='btn btn-xs btn-danger'>Delete</button></td>
+                                <td><button onClick={() => handleWishDelete(item._id, item.bookId)} className='btn btn-xs btn-danger'>Delete</button></td>
                             </tr>)
                         }
                     </tbody>

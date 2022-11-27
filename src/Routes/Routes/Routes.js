@@ -8,6 +8,7 @@ import MyWishList from "../../components/Dashboard/MyWishList/MyWishList";
 import Login from "../../components/Login/Login";
 import SignUp from "../../components/SignUp/SignUp";
 import DashboardLayout from "../../Layout/DashboardLayout";
+import About from "../../Pages/About/About";
 import Blogs from "../../Pages/Blogs/Blogs";
 import Categories from "../../Pages/Home/CategoryCards/Categories";
 import RouteNotFound from "../../Pages/RouteNotFound/RouteNotFound";
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
             {
                 path: '/blogs',
                 element: <Blogs></Blogs>
+            },
+            {
+                path: '/about',
+                element: <About></About>
             },
             {
                 path: '/categoryBooks/:name',

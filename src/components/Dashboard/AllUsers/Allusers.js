@@ -35,6 +35,25 @@ const Allusers = () => {
                 }
             })
     }
+    const handleUserDelete = id => {
+        const proceed = window.confirm('Are you sure, you want to delete this?');
+        if (proceed) {
+            fetch(`http://localhost:5000/users/${id}`, {
+                method: 'DELETE'
+                // headers: {
+                //     authorization: `Bearer ${localStorage.getItem('genius token')}`
+                // }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        toast('deleted successfully');
+                        refetch();
+                    }
+                })
+        }
+    }
     return (
         <div>
             <h2 className='text-3xl mb-6'>All Users</h2>
@@ -59,9 +78,9 @@ const Allusers = () => {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>{user.role}</td>
-                                <td>{user?.role !== 'Admin' && <button onClick={() => handleMakeAdmin(user._id, user.role)}
+                                <td>{user?.role !== 'Admin' && <button onClick={() => handleMakeAdmin(user._id)}
                                     className='btn btn-xs btn-primary'>Make Admin</button>}</td>
-                                <td><button className='btn btn-xs btn-danger'>Delete</button></td>
+                                <td><button onClick={() => handleUserDelete(user._id)} className='btn btn-xs btn-danger'>Delete</button></td>
                             </tr>)
                         }
                     </tbody>
