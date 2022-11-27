@@ -25,6 +25,7 @@ const AuthProvider = ({ children }) => {
         return updateProfile(auth.currentUser, userInfo);
     }
     const logout = () => {
+        localStorage.removeItem('booksToken');
         setLoading(true);
         return signOut(auth);
     }

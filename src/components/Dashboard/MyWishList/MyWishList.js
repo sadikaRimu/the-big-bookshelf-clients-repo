@@ -5,11 +5,18 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const MyWishList = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logout } = useContext(AuthContext);
     const { data: wishList = [], refetch } = useQuery({
         queryKey: ['wishList'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/wishList/${user?.email}`);
+            const res = await fetch(`http://localhost:5000/wishList/${user?.email}`, {
+                headers: {
+                    authorization: `bearer ${localStorage.getItem('booksToken')}`
+                }
+            });
+            if (res.status === 401 || res.status === 403) {
+                logout();
+            }
             const data = await res.json();
             return data;
         }
@@ -20,9 +27,7 @@ const MyWishList = () => {
         if (proceed) {
             fetch(`http://localhost:5000/wishList/${id}`, {
                 method: 'DELETE'
-                // headers: {
-                //     authorization: `Bearer ${localStorage.getItem('genius token')}`
-                // }
+
             })
                 .then(res => res.json())
                 .then(data => {
