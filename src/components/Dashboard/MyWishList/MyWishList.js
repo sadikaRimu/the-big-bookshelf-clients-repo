@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const MyWishList = () => {
@@ -69,6 +70,7 @@ const MyWishList = () => {
                             <th>Phone</th>
                             <th>Location</th>
                             <th>Delete</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -81,6 +83,18 @@ const MyWishList = () => {
                                 <td>{item.contact}</td>
                                 <td>{item.meetinglocation}</td>
                                 <td><button onClick={() => handleWishDelete(item._id, item.bookId)} className='btn btn-xs btn-danger'>Delete</button></td>
+                                <td>
+                                    {
+                                        !item.status &&
+                                        <Link
+                                            to={`/dashboard/payment/${item._id}`}
+                                        > <button className='btn btn-xs btn-primary text-white'>Pay</button></Link>
+                                    }
+                                    {
+                                        item?.status &&
+                                        <button className='btn btn-xs btn-primary text-white'>Paid</button>
+                                    }
+                                </td>
                             </tr>)
                         }
                     </tbody>
