@@ -9,7 +9,7 @@ const CheckoutForm = ({ paymentInfo }) => {
     const [transactionId, setTransactionId] = useState('');
     const [proccessing, setProccessing] = useState(false);
     const [clientSecret, setClientSecret] = useState("");
-    const { price, email, bookName, bookId, contact } = paymentInfo;
+    const { price, email, bookName, bookId, contact, _id } = paymentInfo;
     useEffect(() => {
         // Create PaymentIntent as soon as the page loads
         fetch("http://localhost:5000/create-payment-intent", {
@@ -69,9 +69,10 @@ const CheckoutForm = ({ paymentInfo }) => {
                 price,
                 transactionId: paymentIntent.id,
                 email,
-                bookId
+                bookingId: _id
             }
             fetch('http://localhost:5000/payments', {
+                method: 'POST',
                 headers: {
                     'content-type': 'application/json'
                 },
@@ -80,8 +81,20 @@ const CheckoutForm = ({ paymentInfo }) => {
                 .then(res => res.json())
                 .then(data => {
                     if (data.insertedId) {
-                        setSuccess('Congtrats!, your payment complemtet');
-                        setTransactionId(paymentIntent.id);
+                        fetch(`http://localhost:5000/books/payments/${bookId}`, {
+                            method: 'PUT',
+                            headers: {
+                                authorization: `bearer ${localStorage.getItem('accessToken')}`
+                            }
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.modifiedCount > 0) {
+                                    setSuccess('Congtrats!, your payment complemtet');
+                                    setTransactionId(paymentIntent.id);
+                                }
+                            })
+
                     }
                 })
         }

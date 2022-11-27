@@ -62,41 +62,26 @@ const MyProducts = () => {
                                 </td>
                                 <td>
                                     {
-                                        book?.advertise !== 'Advertised' ?
-                                            <button
-                                                onClick={() => handleAdvertise(book._id)}
-                                                className='btn btn-primary btn-sm'
-                                            >Advertise</button>
+                                        book?.status === 'Available' ?
+                                            <>
+                                                {
+                                                    book?.advertise !== 'Advertised' ?
+                                                        <button
+                                                            onClick={() => handleAdvertise(book._id)}
+                                                            className='btn btn-primary btn-sm'
+                                                        >Advertise</button>
+                                                        :
+                                                        <button className='btn btn-secondary btn-sm'>Advertised</button>
+                                                }
+                                            </>
                                             :
-                                            <button className='btn btn-secondary btn-sm'>Advertised</button>
+                                            <button className='btn btn-praimary btn-sm' disabled>Advertise</button>
                                     }
                                 </td>
-                                <td>
-                                    {
-                                        book?.status === 'Booked' ?
-                                            <p
-                                                className='text-primary font-bold'
-                                            >Booked</p>
-                                            :
-                                            <p
-                                                className='text-primary font-bold'
-                                            >Availabe</p>
-                                    }
-                                </td>
+                                <td className='font-bold'>{book.status}</td>
                                 <td><button
                                     className='btn btn-nutral btn-sm'
                                 >Delete</button></td>
-                                {/* <td>
-                                    {
-                                        book.price && !book.paid && <Link
-                                            to={`/dashboard/payment/${book._id}`}><button
-                                                className='btn btn-primary btn-sm'
-                                            >Pay</button></Link>
-                                    }
-                                    {
-                                        book.price && book.paid && <span className='text-green-500'>Paid</span>
-                                    }
-                                </td> */}
                             </tr>)
                         }
                     </tbody>

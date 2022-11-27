@@ -41,7 +41,7 @@ const DashboardLayout = () => {
                         }
                         {
                             isBuyer && <>
-                                <li><Link to='/dashboard/wishList'>My WishList</Link></li>
+                                <li><Link to='/dashboard/wishList'>My Orders</Link></li>
                             </>
                         }
 
