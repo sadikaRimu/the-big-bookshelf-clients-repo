@@ -63,8 +63,8 @@ const AddSell = () => {
                         .then(res => res.json())
                         .then(result => {
                             console.log(result);
-                            toast.success(`${data.bookName} is added successfully`);
-                            navigate('/dashboard/managedoctors');
+                            alert(`${data.bookName} is added successfully`);
+                            navigate('/dashboard/myProducts');
                         })
                 }
             })

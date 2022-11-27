@@ -8,7 +8,7 @@ import useVerified from '../../../hooks/useVerified';
 const CategoryDetail = ({ book, setBookInfo }) => {
     const { user } = useContext(AuthContext);
     const { _id, bookName, email, SellerName, postDate, originalPrice, resalePrice, condition, booksCategory, image, phone, location, purchaseYear, description } = book;
-    const [isVerified] = useVerified(user?.email);
+    const [isVerified] = useVerified(email);
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">

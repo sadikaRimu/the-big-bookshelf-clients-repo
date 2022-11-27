@@ -8,16 +8,16 @@ const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser, updateUser } = useContext(AuthContext);
     const [signUpError, setSignUpError] = useState('');
-    const [role, setRole] = useState(null);
+    const [role, setRole] = useState('Buyer');
     const [createdUserEmail, setcreatedUserEmail] = useState('');
     const handleRoleSelect = event => {
         event.preventDefault();
         const currentRole = event.target.value;
-        if (currentRole === 'Seller') {
-            setRole(currentRole);
+        if (currentRole === '') {
+            setRole('Buyer');
         }
         else {
-            setRole('Buyer');
+            setRole(currentRole);
         }
         console.log(role);
 
@@ -28,12 +28,13 @@ const SignUp = () => {
     //     navigate('/');
     // }
     const handleSignUp = (data) => {
+        console.log('clicked', data);
         setSignUpError('');
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast('user created successfully');
+
                 const currentUser = {
                     email: user.email
                 }
@@ -57,6 +58,7 @@ const SignUp = () => {
                 updateUser(userInfo)
                     .then(() => {
                         saveUser(data.name, data.email, data.role);
+                        alert('user created successfully');
 
                     })
                     .catch(err => console.error(err))
@@ -65,6 +67,8 @@ const SignUp = () => {
                 console.error(error);
                 setSignUpError(error.message)
             })
+
+
 
     }
     const saveUser = (name, email, role) => {
@@ -86,8 +90,8 @@ const SignUp = () => {
         <div className='h-[800px] flex justify-center items-center'>
             <div className='w-96 p-7'>
                 <h2 className='text-xl text-center'>Sign Up <select onChange={handleRoleSelect} className="select select-bordered max-w-xs">
-                    <option value='Byuer'>Buyer</option>
-                    <option value='Seller'>Seller</option>
+                    <option defaultValue='Byuer'>Buyer</option>
+                    <option defaultValue='Seller'>Seller</option>
                 </select></h2>
                 <form onSubmit={handleSubmit(handleSignUp)}>
                     <div className="form-control w-full max-w-xs">
@@ -118,11 +122,11 @@ const SignUp = () => {
                         </label>
                         <input type='text'
                             {...register('role', {
-                                required: 'Role is required'
+
                             })}
                             className="input input-bordered w-full max-w-xs"
-                            defaultValue='Buyer'
-                            value={role}
+
+                            defaultValue={role}
                             readOnly
                         />
 

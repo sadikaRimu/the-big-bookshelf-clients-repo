@@ -13,7 +13,10 @@ import About from "../../Pages/About/About";
 import Blogs from "../../Pages/Blogs/Blogs";
 import Categories from "../../Pages/Home/CategoryCards/Categories";
 import RouteNotFound from "../../Pages/RouteNotFound/RouteNotFound";
+import AdminRoutes from "../AdminRoutes/AdminRoutes";
+import BuyerRoutes from "../BuyerRoutes/BuyerRoutes";
 import PrivateRoutes from "../PrivateRoutes/PrivateRoutes";
+import SellerRoutes from "../SellerRoutes/SellerRoutes";
 
 const { createBrowserRouter } = require("react-router-dom");
 const { default: Main } = require("../../Layout/Main");
@@ -53,35 +56,35 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <DashboardLayout></DashboardLayout>,
+        element: <PrivateRoutes><DashboardLayout></DashboardLayout></PrivateRoutes>,
         children: [
             {
                 path: '/dashboard/allusers',
-                element: <Allusers></Allusers>
+                element: <AdminRoutes><Allusers></Allusers></AdminRoutes>
             },
             {
                 path: '/dashboard/addsell',
-                element: <AddSell></AddSell>
+                element: <SellerRoutes><AddSell></AddSell></SellerRoutes>
             },
             {
                 path: '/dashboard/myProducts',
-                element: <MyProducts></MyProducts>
+                element: <SellerRoutes><MyProducts></MyProducts></SellerRoutes>
             },
             {
                 path: '/dashboard/allbuyers',
-                element: <AllBuyer></AllBuyer>
+                element: <AdminRoutes><AllBuyer></AllBuyer></AdminRoutes>
             },
             {
                 path: '/dashboard/allsellers',
-                element: <AllSeller></AllSeller>
+                element: <AdminRoutes><AllSeller></AllSeller></AdminRoutes>
             },
             {
                 path: '/dashboard/wishList',
-                element: <MyWishList></MyWishList>
+                element: <BuyerRoutes><MyWishList></MyWishList></BuyerRoutes>
             },
             {
                 path: '/dashboard/payment/:id',
-                element: <Payment></Payment>,
+                element: <BuyerRoutes><Payment></Payment></BuyerRoutes>,
                 loader: ({ params }) => fetch(`http://localhost:5000/bookingItems/${params.id}`)
             }
         ]
