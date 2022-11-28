@@ -7,7 +7,7 @@ const HomeAddBooks = () => {
     const { data: books = [], refetch } = useQuery({
         queryKey: ['books'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/books/addvertise', {
+            const res = await fetch('https://sadika-assignment12-server.vercel.app/books/addvertise', {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('accessToken')}`
                 }

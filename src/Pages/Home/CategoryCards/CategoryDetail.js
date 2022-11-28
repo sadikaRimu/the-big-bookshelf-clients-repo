@@ -11,7 +11,7 @@ const CategoryDetail = ({ book, setBookInfo }) => {
     const { _id, bookName, email, SellerName, postDate, originalPrice, resalePrice, condition, booksCategory, image, phone, location, purchaseYear, description } = book;
     const [isVerified] = useVerified(email);
     const handleReportItem = id => {
-        fetch(`http://localhost:5000/books/report/${id}`, {
+        fetch(`https://sadika-assignment12-server.vercel.app/books/report/${id}`, {
             method: 'PUT'
         })
             .then(res => res.json())

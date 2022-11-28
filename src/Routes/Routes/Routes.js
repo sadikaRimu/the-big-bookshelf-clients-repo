@@ -51,7 +51,7 @@ const router = createBrowserRouter([
             {
                 path: '/categoryBooks/:name',
                 element: <PrivateRoutes><Categories></Categories></PrivateRoutes>,
-                loader: ({ params }) => fetch(`http://localhost:5000/books/${params.name}`)
+                loader: ({ params }) => fetch(`https://sadika-assignment12-server.vercel.app/books/${params.name}`)
             }
         ]
     },
@@ -66,7 +66,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/reportedItem',
                 element: <AdminRoutes><ReportedItem></ReportedItem></AdminRoutes>,
-                //loader: fetch('http://localhost:5000/reportItems')
+                //loader: fetch('https://sadika-assignment12-server.vercel.app/reportItems')
             },
             {
                 path: '/dashboard/addsell',
@@ -91,7 +91,7 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/payment/:id',
                 element: <Payment></Payment>,
-                loader: ({ params }) => fetch(`http://localhost:5000/bookingItems/${params.id}`)
+                loader: ({ params }) => fetch(`https://sadika-assignment12-server.vercel.app/bookingItems/${params.id}`)
             }
         ]
     },

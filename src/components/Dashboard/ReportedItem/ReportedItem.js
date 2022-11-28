@@ -5,7 +5,7 @@ const ReportedItem = () => {
 
     const [reportedItem, setReportedItem] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/reportItems')
+        fetch('https://sadika-assignment12-server.vercel.app/reportItems')
             .then(res => res.json())
             .then(data => {
                 console.log(data);

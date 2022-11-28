@@ -39,7 +39,7 @@ const SignUp = () => {
                     email: user.email
                 }
                 //get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://sadika-assignment12-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
@@ -73,7 +73,7 @@ const SignUp = () => {
     }
     const saveUser = (name, email, role) => {
         const user = { name, email, role };
-        fetch('http://localhost:5000/users', {
+        fetch('https://sadika-assignment12-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

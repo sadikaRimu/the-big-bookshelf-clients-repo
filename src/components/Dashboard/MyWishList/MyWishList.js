@@ -9,7 +9,7 @@ const MyWishList = () => {
     const { data: wishList = [], refetch } = useQuery({
         queryKey: ['wishList'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/wishList/${user?.email}`, {
+            const res = await fetch(`https://sadika-assignment12-server.vercel.app/wishList/${user?.email}`, {
                 headers: {
                     authorization: `bearer ${localStorage.getItem('booksToken')}`
                 }
@@ -25,7 +25,7 @@ const MyWishList = () => {
 
         const proceed = window.confirm('Are you sure, you want to delete this?');
         if (proceed) {
-            fetch(`http://localhost:5000/wishList/${id}`, {
+            fetch(`https://sadika-assignment12-server.vercel.app/wishList/${id}`, {
                 method: 'DELETE'
 
             })
@@ -45,7 +45,7 @@ const MyWishList = () => {
         const bookStatus = {
             status: 'Available'
         }
-        fetch(`http://localhost:5000/books/statusAvailable/${id}`, {
+        fetch(`https://sadika-assignment12-server.vercel.app/books/statusAvailable/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',

@@ -7,7 +7,7 @@ const About = () => {
     const [receivedData, setReceivedData] = useState([]);
     const handleAllBooks = () => {
 
-        Axios.get('http://localhost:5000/allbooks')
+        Axios.get('https://sadika-assignment12-server.vercel.app/allbooks')
             .then(res => {
                 console.log(res.data);
                 setReceivedData(res.data);

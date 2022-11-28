@@ -8,7 +8,7 @@ const Allusers = () => {
     const { data: users = [], refetch } = useQuery({
         queryKey: ['users'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/users');
+            const res = await fetch('https://sadika-assignment12-server.vercel.app/users');
             const data = await res.json();
             return data;
         }
@@ -19,7 +19,7 @@ const Allusers = () => {
             role: 'Admin'
         }
 
-        fetch(`http://localhost:5000/users/makeAdmin/${id}`, {
+        fetch(`https://sadika-assignment12-server.vercel.app/users/makeAdmin/${id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json',
@@ -38,7 +38,7 @@ const Allusers = () => {
     const handleUserDelete = id => {
         const proceed = window.confirm('Are you sure, you want to delete this?');
         if (proceed) {
-            fetch(`http://localhost:5000/users/${id}`, {
+            fetch(`https://sadika-assignment12-server.vercel.app/users/${id}`, {
                 method: 'DELETE'
                 // headers: {
                 //     authorization: `Bearer ${localStorage.getItem('genius token')}`

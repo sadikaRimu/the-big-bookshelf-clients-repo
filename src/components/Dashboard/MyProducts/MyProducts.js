@@ -6,7 +6,7 @@ import { AuthContext } from '../../../contexts/AuthProvider';
 
 const MyProducts = () => {
     const { user } = useContext(AuthContext);
-    const url = `http://localhost:5000/books?email=${user?.email}`;
+    const url = `https://sadika-assignment12-server.vercel.app/books?email=${user?.email}`;
     const { data: books = [], refetch } = useQuery({
         queryKey: ['books', user?.email],
         queryFn: async () => {
@@ -20,7 +20,7 @@ const MyProducts = () => {
         }
     });
     const handleAdvertise = (id) => {
-        fetch(`http://localhost:5000/books/${id}`, {
+        fetch(`https://sadika-assignment12-server.vercel.app/books/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('booksToken')}`
@@ -37,7 +37,7 @@ const MyProducts = () => {
     const handleDeleteProduct = id => {
         const proceed = window.confirm('Are you sure, you want to delete this?');
         if (proceed) {
-            fetch(`http://localhost:5000/books/${id}`, {
+            fetch(`https://sadika-assignment12-server.vercel.app/books/${id}`, {
                 method: 'DELETE'
 
             })
@@ -53,7 +53,7 @@ const MyProducts = () => {
         }
     }
     const handleRemoveBooked = (id) => {
-        fetch(`http://localhost:5000/booking/books/${id}`, {
+        fetch(`https://sadika-assignment12-server.vercel.app/booking/books/${id}`, {
             method: 'DELETE'
 
         })

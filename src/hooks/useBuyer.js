@@ -5,7 +5,7 @@ const useBuyer = email => {
     const [isAdminLoading, setIsAdminLoading] = useState(true);
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/users/buyer/${email}`)
+            fetch(`https://sadika-assignment12-server.vercel.app/users/buyer/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);

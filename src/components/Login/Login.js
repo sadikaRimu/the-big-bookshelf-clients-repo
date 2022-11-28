@@ -31,7 +31,7 @@ const Login = () => {
                 }
                 console.log('currentUser', currentUser);
                 //get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://sadika-assignment12-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
@@ -61,7 +61,7 @@ const Login = () => {
                 }
                 console.log('currentUser', currentUser);
                 //get jwt token
-                fetch('http://localhost:5000/jwt', {
+                fetch('https://sadika-assignment12-server.vercel.app/jwt', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',
@@ -86,7 +86,7 @@ const Login = () => {
     }
     const userSaved = (user, email) => {
         console.log('email', email);
-        fetch(`http://localhost:5000/users/socialUser/${email}`)
+        fetch(`https://sadika-assignment12-server.vercel.app/users/socialUser/${email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);
@@ -103,7 +103,7 @@ const Login = () => {
     }
     const saveUser = (name, email, role = 'Buyer') => {
         const user = { name, email, role };
-        fetch('http://localhost:5000/users', {
+        fetch('https://sadika-assignment12-server.vercel.app/users', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -5,7 +5,7 @@ const useBooked = booksCategory => {
     const [isAdminLoading, setIsAdminLoading] = useState(true);
     useEffect(() => {
         if (booksCategory) {
-            fetch(`http://localhost:5000/books/${booksCategory}`)
+            fetch(`https://sadika-assignment12-server.vercel.app/books/${booksCategory}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);

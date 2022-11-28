@@ -15,7 +15,7 @@ const AddSell = () => {
     const { data: booksCategory, isLoading } = useQuery({
         queryKey: ['booksCategory'],
         queryFn: async () => {
-            const res = await fetch('http://localhost:5000/booksCategory');
+            const res = await fetch('https://sadika-assignment12-server.vercel.app/booksCategory');
             const data = await res.json();
             return data;
         }
@@ -52,7 +52,7 @@ const AddSell = () => {
                     }
 
                     //save books info to the database
-                    fetch('http://localhost:5000/books', {
+                    fetch('https://sadika-assignment12-server.vercel.app/books', {
                         method: 'POST',
                         headers: {
                             'content-type': 'application/json',

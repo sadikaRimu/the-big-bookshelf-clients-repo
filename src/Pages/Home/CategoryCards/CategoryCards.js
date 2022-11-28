@@ -10,7 +10,7 @@ const CategoryCards = () => {
 
 
     useEffect(() => {
-        fetch('http://localhost:5000/booksCategory')
+        fetch('https://sadika-assignment12-server.vercel.app/booksCategory')
             .then(res => res.json())
             .then(data => {
                 setBookCategory(data);

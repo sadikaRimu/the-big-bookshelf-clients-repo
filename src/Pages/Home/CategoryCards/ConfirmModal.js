@@ -22,7 +22,7 @@ const ConfirmModal = ({ bookInfo, setBookInfo }) => {
             meetinglocation
 
         }
-        fetch('http://localhost:5000/booking', {
+        fetch('https://sadika-assignment12-server.vercel.app/booking', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -41,7 +41,7 @@ const ConfirmModal = ({ bookInfo, setBookInfo }) => {
 
     }
     const handlebookingStatus = id => {
-        fetch(`http://localhost:5000/books/status/${id}`, {
+        fetch(`https://sadika-assignment12-server.vercel.app/books/status/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `bearer ${localStorage.getItem('accessToken')}`

@@ -5,7 +5,7 @@ const useVerified = email => {
     const [isAdminLoading, setIsAdminLoading] = useState(true);
     useEffect(() => {
         if (email) {
-            fetch(`http://localhost:5000/users/verified/${email}`)
+            fetch(`https://sadika-assignment12-server.vercel.app/users/verified/${email}`)
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
