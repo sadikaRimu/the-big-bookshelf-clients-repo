@@ -78,4 +78,4 @@ Features:
 ->front-end developed by React js.
 ->login secured by JWT token implementation
 ->back-end developed by node js,mongodb.
-Live Link:
+Live Link: https://sadika-assignment12.web.app/
