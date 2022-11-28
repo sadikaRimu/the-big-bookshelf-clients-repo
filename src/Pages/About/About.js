@@ -1,10 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import img from '../../assets/images/History.PNG';
+import Axios from 'axios';
+import AboutDetails from './AboutDetails';
 
 const About = () => {
+    const [receivedData, setReceivedData] = useState([]);
+    const handleAllBooks = () => {
+
+        Axios.get('http://localhost:5000/allbooks')
+            .then(res => {
+                console.log(res.data);
+                setReceivedData(res.data);
+            })
+    }
     return (
         <div>
             <div>
+                <div className='items-center'>
+                    <button onClick={handleAllBooks} className='btn btn-primary'>Click to see all available books</button>
+                </div>
+                <div className='grid gap-6 grid-cols-1 lg:grid-cols-3 md:grid-cols-2 mb-6'>
+                    {
+                        receivedData?.map(data => <AboutDetails
+                            key={data._id}
+                            data={data}
+                        ></AboutDetails>)
+                    }
+                </div>
                 <div className="hero min-h-screen bg-base-200">
                     <div className="hero-content flex-col lg:flex-row">
                         <img src={img} alt='' className="w-full rounded-lg shadow-2xl" />

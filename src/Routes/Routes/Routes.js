@@ -6,6 +6,7 @@ import Dashboard from "../../components/Dashboard/Dashboard";
 import MyProducts from "../../components/Dashboard/MyProducts/MyProducts";
 import MyWishList from "../../components/Dashboard/MyWishList/MyWishList";
 import Payment from "../../components/Dashboard/Payment/Payment";
+import ReportedItem from "../../components/Dashboard/ReportedItem/ReportedItem";
 import Login from "../../components/Login/Login";
 import SignUp from "../../components/SignUp/SignUp";
 import DashboardLayout from "../../Layout/DashboardLayout";
@@ -61,6 +62,11 @@ const router = createBrowserRouter([
             {
                 path: '/dashboard/allusers',
                 element: <AdminRoutes><Allusers></Allusers></AdminRoutes>
+            },
+            {
+                path: '/dashboard/reportedItem',
+                element: <AdminRoutes><ReportedItem></ReportedItem></AdminRoutes>,
+                //loader: fetch('http://localhost:5000/reportItems')
             },
             {
                 path: '/dashboard/addsell',

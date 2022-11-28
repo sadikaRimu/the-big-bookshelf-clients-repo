@@ -71,6 +71,7 @@ const MyWishList = () => {
                         <tr>
                             <th></th>
                             <th>Book Name</th>
+                            <th>Price</th>
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Location</th>
@@ -84,6 +85,7 @@ const MyWishList = () => {
                             wishList.map((item, i) => <tr key={item._id}>
                                 <th>{i + 1}</th>
                                 <td>{item.bookName}</td>
+                                <td>${item.price}</td>
                                 <td>{item.email}</td>
                                 <td>{item.contact}</td>
                                 <td>{item.meetinglocation}</td>

@@ -92,6 +92,7 @@ const CheckoutForm = ({ paymentInfo }) => {
                                 if (data.modifiedCount > 0) {
                                     setSuccess('Congtrats!, your payment complemtet');
                                     setTransactionId(paymentIntent.id);
+                                    alert('payment successful');
                                 }
                             })
 

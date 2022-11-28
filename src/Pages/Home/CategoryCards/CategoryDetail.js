@@ -4,11 +4,25 @@ import toast from 'react-hot-toast';
 import { AuthContext } from '../../../contexts/AuthProvider';
 import blueTick from '../../../assets/images/bluTick.jpg';
 import useVerified from '../../../hooks/useVerified';
+import { Link } from 'react-router-dom';
 
 const CategoryDetail = ({ book, setBookInfo }) => {
     const { user } = useContext(AuthContext);
     const { _id, bookName, email, SellerName, postDate, originalPrice, resalePrice, condition, booksCategory, image, phone, location, purchaseYear, description } = book;
     const [isVerified] = useVerified(email);
+    const handleReportItem = id => {
+        fetch(`http://localhost:5000/books/report/${id}`, {
+            method: 'PUT'
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount > 0) {
+
+                    alert('this item reported');
+
+                }
+            })
+    }
     return (
         <div className="card w-96 bg-base-100 shadow-xl">
             <figure className="px-10 pt-10">
@@ -31,6 +45,7 @@ const CategoryDetail = ({ book, setBookInfo }) => {
                 <p><strong>Books Condition: </strong>{condition}</p>
                 <p><strong>Purchase Date: </strong>{purchaseYear}</p>
                 <p><strong>Post Date: </strong>{postDate}</p>
+                <button onClick={() => handleReportItem(_id)} className='btn btn-sm'>Report this</button>
                 <label htmlFor="booking-modal" onClick={() => setBookInfo(book)} className="btn">Book Now</label>
 
             </div>

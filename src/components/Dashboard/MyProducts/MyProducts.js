@@ -23,7 +23,7 @@ const MyProducts = () => {
         fetch(`http://localhost:5000/books/${id}`, {
             method: 'PUT',
             headers: {
-                authorization: `bearer ${localStorage.getItem('accessToken')}`
+                authorization: `bearer ${localStorage.getItem('booksToken')}`
             }
         })
             .then(res => res.json())
@@ -33,6 +33,38 @@ const MyProducts = () => {
                     refetch();
                 }
             })
+    }
+    const handleDeleteProduct = id => {
+        const proceed = window.confirm('Are you sure, you want to delete this?');
+        if (proceed) {
+            fetch(`http://localhost:5000/books/${id}`, {
+                method: 'DELETE'
+
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        handleRemoveBooked(id);
+                        toast('deleted successfully');
+                        refetch();
+                    }
+                })
+        }
+    }
+    const handleRemoveBooked = (id) => {
+        fetch(`http://localhost:5000/booking/books/${id}`, {
+            method: 'DELETE'
+
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.deletedCount > 0) {
+                    console.log('deleted')
+                }
+            })
+
     }
     return (
         <div>
@@ -45,7 +77,7 @@ const MyProducts = () => {
                             <th></th>
                             <th>Book Name</th>
                             <th>Book's Info</th>
-                            <th>AddVestise</th>
+                            <th>AddVertise</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -79,9 +111,17 @@ const MyProducts = () => {
                                     }
                                 </td>
                                 <td className='font-bold'>{book.status}</td>
-                                <td><button
-                                    className='btn btn-nutral btn-sm'
-                                >Delete</button></td>
+                                <td>
+                                    {
+                                        book?.status === 'Reported' ?
+                                            <button className='btn btn-primary' disabled>Delete</button>
+                                            :
+                                            <button
+                                                onClick={() => handleDeleteProduct(book._id)}
+                                                className='btn btn-nutral btn-sm'
+                                            >Delete</button>
+                                    }
+                                </td>
                             </tr>)
                         }
                     </tbody>

@@ -1,8 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useState } from 'react';
 import HomeAddBooksCard from './HomeAddBooksCard';
 
 const HomeAddBooks = () => {
+    const [getAdd, setGetAdd] = useState([]);
     const { data: books = [], refetch } = useQuery({
         queryKey: ['books'],
         queryFn: async () => {
@@ -15,6 +16,9 @@ const HomeAddBooks = () => {
             return data;
         }
     });
+    const displayAdd = () => {
+
+    }
     return (
         <div>
             <div className='grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mt-6'>

@@ -15,9 +15,9 @@ const BannerItem = ({ slide }) => {
 
                 </h1>
             </div>
-            <div className="absolute flex justify-end w-2/5 transform -translate-y-1/2 left-24  top-1/2">
+            <div className="absolute flex justify-end w-2/5 transform -translate-y-1/2 left-24 top-2/3 py-6 lg:top-1/2">
                 <p className='text-white text-xl'>
-                    Different categories books are available here,you can buy books from here also you can sell your old books here.
+                    Different categories second hand books are available here,you can buy second hand books from here also you can sell your old books here.
                 </p>
             </div>
             <div className="absolute flex justify-start w-2/5 transform -translate-y-1/2 left-24  top-3/4">
