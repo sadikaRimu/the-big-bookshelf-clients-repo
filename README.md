@@ -68,3 +68,14 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+Website Name: The Big Bookshelf
+It is a second hand books selling and buying website. user's can buy and sell old books as their user type by sign up or logged in.
+Features:
+->email, password base login,sign up and social login is implemented using firebase authentication.
+->Dashboard implemented for seller,buyer and admin panel.Different private route implemented for each user type.
+->online payment gateway implemented by stripe.
+->front-end developed by React js.
+->login secured by JWT token implementation
+->back-end developed by node js,mongodb.
+Live Link:
